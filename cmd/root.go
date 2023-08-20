@@ -1,10 +1,15 @@
 package cmd
 
 import (
+	"fmt"
 	"log"
 	"net/http"
 
 	"github.com/spf13/cobra"
+)
+
+var (
+	PORT = "8080"
 )
 
 var rootCmd = &cobra.Command{
@@ -16,12 +21,18 @@ var rootCmd = &cobra.Command{
 
 		http.Handle("/", fs)
 
-		log.Print("Listening on :3000...")
-		err := http.ListenAndServe(":3000", nil)
+		port := fmt.Sprintf(":%s", PORT)
+
+		log.Printf("Listening on %s...", port)
+		err := http.ListenAndServe(port, nil)
 		if err != nil {
 			log.Fatalf("Fail to serve files: %s", err)
 		}
 	},
+}
+
+func init() {
+	rootCmd.PersistentFlags().StringVarP(&PORT, "port", "p", "8080", "Set port for web server to listen on")
 }
 
 func Execute() {
