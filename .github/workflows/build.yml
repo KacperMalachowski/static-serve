@@ -72,9 +72,6 @@ jobs:
     permissions:
       packages: write
       contents: read
-      
-    env:
-      KO_DOCKER_REPO: ghcr.io/kacpermalachowski/static-serve
     steps:
       - name: Harden Runner
         uses: step-security/harden-runner@8ca2b8b2ece13480cda6dacd3511b49857a23c09 # v2.5.1
