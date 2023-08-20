@@ -84,7 +84,7 @@ jobs:
       - uses: actions/checkout@c85c95e3d7251135ab7dc9ce3241c5835cc595a9 # v3.5.3
 
       - uses: ko-build/setup-ko@ace48d793556083a76f1e3e6068850c1f4a369aa # v0.6
-      - run: ko login ghcr.io -u ${{ github.actor }} -p ${{ secrets.GITHUB_TOKEN }}
+      - run: ko login ghcr.io -u ${{ github.actor }} -p ${{ secrets.CR_TOKEN }}
       - run: ko build -B
 
   security:
