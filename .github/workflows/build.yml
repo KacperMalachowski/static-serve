@@ -71,6 +71,7 @@ jobs:
     needs: [golangci, verify, test]
     permissions:
       packages: write
+      contents: read
     env:
       KO_DOCKER_REPO: ghcr.io/kacpermalachowski/static-serve
     steps:
