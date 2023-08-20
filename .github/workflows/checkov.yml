@@ -19,14 +19,14 @@ jobs:
       actions: read
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@c85c95e3d7251135ab7dc9ce3241c5835cc595a9 # v3.5.3
       - name: Checkov Github Action
-        uses: bridgecrewio/checkov-action@v12
+        uses: bridgecrewio/checkov-action@36ffc51b02ed748e77aa3225b739f9fc173e2da7 # v12.2464.0
         with:
           output_format: cli,sarif
           output_file_path: console,results.sarif
       - name: Upload SARIF file
-        uses: github/codeql-action/upload-sarif@v2
+        uses: github/codeql-action/upload-sarif@a09933a12a80f87b87005513f0abb1494c27a716 # v2.21.4
         if: success() || failure()
         with:
           sarif_file: results.sarif
