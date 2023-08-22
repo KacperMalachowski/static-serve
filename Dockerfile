@@ -1,18 +1,36 @@
 FROM golang:1.20-alpine3.18 AS builder
 
-ARG TARGETARCH
+RUN apk update && apk add --no-cache git ca-certificates && update-ca-certificates
 
-WORKDIR /app
+ENV USER=appuser
+ENV UID=10001 
 
-COPY go.mod go.sum ./
-RUN go mod download
+RUN adduser \    
+  --disabled-password \    
+  --gecos "" \    
+  --home "/nonexistent" \    
+  --shell "/sbin/nologin" \    
+  --no-create-home \    
+  --uid "${UID}" \    
+  "${USER}"
+
+WORKDIR $GOPATH/src/KacperMalachowski/static-serve/
 
 COPY . ./
+RUN go mod download
+RUN go mod verify
 
-RUN CGO_ENABLED=0 GOOS=linux go build -o /serve
+
+RUN CGO_ENABLED=0 GOOS=linux go build -ldflags="-w -s" -o /go/bin/serve
 
 FROM scratch
 
-COPY --from=builder /serve /serve
+COPY --from=builder /etc/ssl/certs/ca-certificates.crt /etc/ssl/certs/
+COPY --from=builder /etc/passwd /etc/passwd
+COPY --from=builder /etc/group /etc/group
 
-CMD ["/serve"]
+COPY --from=builder /go/bin/serve /go/bin/serve
+
+USER appuser:appuser
+
+CMD ["/go/bin/serve"]
