@@ -32,5 +32,5 @@ COPY --from=builder /etc/group /etc/group
 COPY --from=builder /go/bin/serve /go/bin/serve
 
 USER appuser:appuser
-
+#checkov:skip=CKV_DOCKER_2: No need to setup Health Check
 CMD ["/go/bin/serve"]
