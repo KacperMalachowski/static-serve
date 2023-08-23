@@ -96,7 +96,7 @@ jobs:
         uses: docker/metadata-action@818d4b7b91585d195f67373fd9cb0332e31a7175 # v4.6.0
         with:
           images: |
-            ghcr.io/${{ github.repository }}
+            ghcr.io/kacpermalachowski/static-serve
           tags: |
             type=schedule
             type=sha
@@ -130,7 +130,7 @@ jobs:
       - name: Run Trivy vulnerability scanner
         uses: aquasecurity/trivy-action@559eb1224e654a86c844a795e6702a0742c60c72 # master
         with:
-          image-ref: ghcr.io/${{ github.repository }}
+          image-ref: ghcr.io/kacpermalachowski/static-serve:latest
           format: 'sarif'
           output: 'trivy-results.sarif'
 
