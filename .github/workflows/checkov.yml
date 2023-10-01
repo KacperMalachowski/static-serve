@@ -26,12 +26,12 @@ jobs:
 
       - uses: actions/checkout@8ade135a41bc03ea155e62e844d188df1ea18608 # v4.1.0
       - name: Checkov Github Action
-        uses: bridgecrewio/checkov-action@9f8f47aa9790f380ed6599c59b22f417b38919b5 # v12.2512.0
+        uses: bridgecrewio/checkov-action@01f8b68d7ec0d63297abcf2a545acc0ffd34a7d7 # v12.2518.0
         with:
           output_format: cli,sarif
           output_file_path: console,results.sarif
       - name: Upload SARIF file
-        uses: github/codeql-action/upload-sarif@6a28655e3dcb49cb0840ea372fd6d17733edd8a4 # v2.21.8
+        uses: github/codeql-action/upload-sarif@ddccb873888234080b77e9bc2d4764d5ccaaccf9 # v2.21.9
         if: success() || failure()
         with:
           sarif_file: results.sarif
