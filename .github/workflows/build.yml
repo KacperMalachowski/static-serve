@@ -149,7 +149,7 @@ jobs:
         with:
           artifacts: "./artifacts/**/*"
           generateReleaseNotes: true
-          draft: true
+          tag: ${{ steps.create_release.outputs.tag }}
         
     
 
@@ -158,7 +158,7 @@ jobs:
     runs-on: ubuntu-latest
     needs: [golangci, verify, test, security]
     permissions:
-      contents: write
+      packages: write
     steps:
       - name: Harden Runner
         uses: step-security/harden-runner@8ca2b8b2ece13480cda6dacd3511b49857a23c09 # v2.5.1
