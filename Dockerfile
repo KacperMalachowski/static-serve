@@ -1,6 +1,8 @@
 FROM golang:1.21-alpine3.18 AS builder
 
-RUN apk update && apk add --no-cache git ca-certificates && update-ca-certificates
+RUN apk update && \
+  apk add --no-cache git=2.33.0-r0 ca-certificates=20191127-r5 && \
+  update-ca-certificates
 
 ENV USER=appuser
 ENV UID=10001 
