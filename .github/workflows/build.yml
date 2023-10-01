@@ -145,7 +145,7 @@ jobs:
           echo "Creating release tag $TAG"
           echo "::set-output name=tag::$TAG"
       - name: Create Release
-        uses: ncipollo/release-action@v1
+        uses: ncipollo/release-action@6c75be85e571768fa31b40abf38de58ba0397db5 #v1.13.0
         with:
           artifacts: "./artifacts/**/*"
           generateReleaseNotes: true
