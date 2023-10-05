@@ -14,7 +14,7 @@ var (
 
 var rootCmd = &cobra.Command{
 	Use:   "serve",
-	Short: "Serve fiels in current directory",
+	Short: "Serve files in current directory",
 	Long:  "Serve static files from current directory",
 	Run: func(cmd *cobra.Command, args []string) {
 		fs := http.FileServer(http.Dir("."))
