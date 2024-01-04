@@ -26,7 +26,7 @@ jobs:
 
       - uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4.1.1
       - name: Checkov Github Action
-        uses: bridgecrewio/checkov-action@487b93e19b10b7579d9a8c5be7800801a0f23f27 # v12.2608.0
+        uses: bridgecrewio/checkov-action@f6ae647c50840cc7c9de3ec4176b419e5c2f4a7d # v12.2632.0
         with:
           output_format: cli,sarif
           output_file_path: console,results.sarif
