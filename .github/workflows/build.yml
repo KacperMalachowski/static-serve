@@ -119,7 +119,7 @@ jobs:
       - run: for x in serve-windows-*; do mv $x $x.exe; done
         if: matrix.os == 'windows'
       - name: Upload Go ${{ matrix.os }}/${{ matrix.arch }}
-        uses: actions/upload-artifact@a8a3f3ad30e3422c9c7b888a15615d19a852ae32 #v3.1.3
+        uses: actions/upload-artifact@26f96dfa697d77e81fd5907df203aa23a56210a8 #v4.3.0
         with:
           name: ${{ matrix.os }}-${{ matrix.arch }}
           path: ./serve*
