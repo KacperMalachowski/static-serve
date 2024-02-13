@@ -6,7 +6,7 @@ permissions: read-all
 jobs:
   dependabot:
     runs-on: ubuntu-latest
-    if: ${{ github.actor == 'dependabot[bot]' }}
+    if: ${{ github.actor == 'KacperMalachowski' }}
     permissions:
       pull-requests: write
       contents: write
